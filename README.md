@@ -1,9 +1,5 @@
 # extract-promoter-sequences
-
-A seemingly simple step often glossed over in motif discovery pipelines is the extraction of putative
-promoter regions from genomic sequence. This can be typically accomplished with lengthy 
-python code or other open source scripts that tend to be finiky. Here though, 
-I attempt to provide an easier method using bedtools. 
+A seemingly simple step often glossed over in motif discovery pipelines is the extraction of putative promoter regions from genomic sequence. Accomplishing this task often involves either typing lengthy python code, using command line functions that won't preserve the gene name for each promoter, or using complicated open source scripts. Here I provide an easier method that relies heavily on bedtools. 
 
 **INPUT:**
 1. a fasta-formatted sequence file,
@@ -11,9 +7,18 @@ I attempt to provide an easier method using bedtools.
 3. the desired promoter length in basepairs
 
 **OUTPUT:** 
-a fasta file with of promoter sequences where each promoter sequence has the same name as its associated gene sequence.
+a fasta file of promoter sequences where each promoter sequence has the same name as its associated gene sequence.
 
 ## USAGE
+Download the three scripts in this repository and put them all in the same directory as the fasta file and gff file you want to extract promoter sequences from. Make sure
+you make all three of these scripts executable with:
+`chmod +x extract_prom_seq.bash`
+
+`chmod +x build_genome_file.py`
+
+`chmod +x subset_gene_features.R`
+
+To extract promoter sequences, use:
 
 `./extract_prom_seq.bash -f <FASTA FILE> -g <GFF FILE> -l <DESIRED PROMOTER LENGTH>`
 
