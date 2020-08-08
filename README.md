@@ -1,5 +1,5 @@
 # extract-promoter-sequences
-A seemingly simple step often glossed over in motif discovery pipelines is the extraction of putative promoter regions from genomic sequence. Accomplishing this task often involves either typing lengthy python code, using command line functions that won't preserve the gene name for each promoter, or using complicated open source scripts. Here I provide an easier method that relies heavily on bedtools. 
+A seemingly simple step in many bioinformatic pipelines is the extraction of putative promoter regions from genomic sequence. Accomplishing this task often involves either typing lengthy python code, using command line functions that won't preserve the gene name for each promoter, or using complicated open source scripts. Here I provide an easier method that relies heavily on bedtools. 
 
 **INPUT:**
 1. a fasta-formatted sequence file,
