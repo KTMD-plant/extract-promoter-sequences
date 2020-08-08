@@ -28,7 +28,7 @@ For example:
 
 will extract 500 bp of sequence upstream of every gene listed in my.gff from my.fasta.
 
-## FORMAT NOTES:
+## FORMAT NOTES
 The final column in the GFF file is typically written as a dictionary in the format 
 key1=value1;key2=value2;... etc.
 
@@ -39,7 +39,7 @@ ch01    maker     gene      93750     94430     .     +     .     ID=somegene;Na
 
 There can be as many dictionary entries in the final column as desired, so long as the "Name" entry exists.
 
-## DEPENDENCIES:
+## DEPENDENCIES
 
 1. bedtools
 
