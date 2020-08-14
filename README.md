@@ -12,6 +12,7 @@ a fasta file of promoter sequences where each promoter sequence has the same nam
 ## USAGE
 Download the three scripts in this repository and put them all in the same directory as the fasta file and gff file you want to extract promoter sequences from. Make sure
 you make all three of these scripts executable with:
+
 `chmod +x extract_prom_seq.bash`
 
 `chmod +x build_genome_file.py`
