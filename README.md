@@ -21,13 +21,13 @@ you make all three of these scripts executable with:
 
 To extract promoter sequences, use:
 
-`./extract_prom_seq.bash -f <FASTA FILE> -g <GFF FILE> -l <DESIRED PROMOTER LENGTH>`
+`./extract_prom_seq.bash -g <GFF FILE> -f <FASTA FILE> -u <BP UPSTREAM OF TSS> -d <BP DOWNSTREAM OF TSS> -o <NAME OF OUTPUT FASTA FILE>`
 
 For example:
 
-`./extract_prom_seq.bash -f my.fasta -g my.gff -l 500`
+`./extract_prom_seq.bash -f my.fasta -g my.gff -u 1000 -d 500 -o my_prom.fasta`
 
-will extract 500 bp of sequence upstream of every gene listed in my.gff from my.fasta.
+will extract sequences that include 1000 bp upstream of the transcription start site, 500 bp downstream of the transcription start site, and the transcription start site itself for every gene listed in my.gff from my.fasta. These sequences are then saved to my_prom.fasta. Thus, most of the final sequences will be 1501 bp long (1000 + 500 + 1). Gene features near the ends of chromosomes may be shorter than this simply because sequence cannot be extracted beyond the chromosome boundaries. 
 
 ## FORMAT NOTES
 The final column in the GFF file is typically written as a dictionary in the format 
@@ -36,7 +36,9 @@ key1=value1;key2=value2;... etc.
 In order for this code to work, every feature labeled as "gene" in the gff file should have 
 a "Name" key whose value is the name of the gene. For example, a line in the gff file may look like this:
 
+```
 ch01    maker     gene      93750     94430     .     +     .     ID=somegene;Name=gene1.1
+```
 
 There can be as many dictionary entries in the final column as desired, so long as the "Name" entry exists.
 
@@ -53,9 +55,3 @@ I tested this with R 3.6
 3. Biopython
 
 Installation instructions are [here](https://biopython.org/wiki/Download)
-
-4. dos2unix (maybe optional, but I need to do more testing)
-
-Install with:
-
-`sudo apt install dos2unix`
