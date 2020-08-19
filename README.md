@@ -32,6 +32,8 @@ you make all three of these scripts executable with:
 
 `chmod +x subset_gene_features.R`
 
+`chmod +x seq_merge.py`
+
 To extract promoter sequences, use:
 
 `./extract_prom_seq.bash -g <GFF FILE> -f <FASTA FILE> -u <BP UPSTREAM OF TSS> -d <BP DOWNSTREAM OF TSS> -o <NAME OF OUTPUT FASTA FILE>`
@@ -68,3 +70,7 @@ I tested this with R 3.6
 3. Biopython
 
 Installation instructions are [here](https://biopython.org/wiki/Download)
+
+## REFERENCES
+
+I acquired the code in the seq_merge.py file from this [Stack Overflow post](https://bioinformatics.stackexchange.com/questions/4714/how-to-merge-transcript-sequence-with-same-name-in-a-fasta-file).
