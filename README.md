@@ -1,13 +1,26 @@
 # extract-promoter-sequences
-A seemingly simple step in many bioinformatic pipelines is the extraction of putative promoter regions from genomic sequence. Accomplishing this task often involves either typing lengthy python code, using command line functions that won't preserve the gene name for each promoter, or using complicated open source scripts. Here I provide an easier method that relies heavily on bedtools. 
+A *seemingly* simple step in many bioinformatic pipelines is the extraction of putative promoter regions from genomic sequence. Accomplishing this task often involves either typing lengthy python code, using command line functions that won't preserve the gene name for each promoter, or using complicated open source scripts. Here I provide an easier method that relies heavily on bedtools. 
 
-**INPUT:**
-1. a fasta-formatted sequence file,
-2. a genome feature format (gff) file, 
-3. the desired promoter length in basepairs
+**INPUT**
 
-**OUTPUT:** 
-a fasta file of promoter sequences where each promoter sequence has the same name as its associated gene sequence.
+There are 5 required inputs to this script:
+
+1. a fasta-formatted sequence file (-f)
+2. a genome feature format (gff) file (-g)
+3. number of basepairs upstream of the transcription start site to extract (-u)
+4. number of basepairs downstream of the transcription start site to extract (-d)
+5. a name for the output file containing the promoter sequences in fasta format (-o)
+
+**OUTPUT** 
+
+a fasta file of promoter sequences where each promoter sequence has the same name (same fasta header line) as its associated gene sequence.
+
+**IMPORTANT**
+
+Thi code **will*** account for chromosome boundaries.
+
+This code will **NOT** account for overlaps between promoter sequences and the coding sequence of adjacent gene models. If two gene models are close together or are overlapping in your gff file, the promoter regions will bleed into coding sequence. Such instances should be relatively rare in most datasets. I explicitly avoided accounting for promoter-gene overlaps because there's no obvious answer for how to handle situations where one gene feature fully overlaps with another gene feature on a chromosome.
+
 
 ## USAGE
 Download the three scripts in this repository and put them all in the same directory as the fasta file and gff file you want to extract promoter sequences from. Make sure
