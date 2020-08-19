@@ -18,10 +18,6 @@ echo "Extracting promoter sequences $UP bp upstream and $DOWN bp downstream of t
 #Generate genome file (i.e. tsv file of chromosome lengths)
 python3 build_genome_file.py $FASTA
 
-#Replace commas with tabs in genome file
-#dos2unix genome.tmp
-#echo Conversion done.
-
 #Remove hashtags from gff, then the empty lines that result
 echo Formatting gff file for input into R...
 sed 's/#.*//g' $GFF | sed '/^[[:space:]]*$/d' > notags_gff.tmp
@@ -38,11 +34,6 @@ bedtools flank -s -i notags_wnames_gff.tmp -g genome.tmp -l $UP -r $DOWN > notag
 #Combine with original file, sort, then merge bookended features
 cat notags_wnames_gff.tmp notags_wnames_flanks_gff.tmp > notags_wnames_flanks_combined_gff.tmp
 bedtools sort -i notags_wnames_flanks_combined_gff.tmp > notags_wnames_flanks_combined_sorted_gff.tmp
-
-#Extract first column
-#paste \
-#<(cut -f 3 notags_wnames_flanks_combined_sorted_gff.tmp | uniq -d) \
-#<(cut -f 2,3 prom_gff.tmp) > prom_final_gff.tmp
 
 #Create fasta file of promoter sequences
 echo Extracting promoter sequences...
