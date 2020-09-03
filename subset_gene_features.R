@@ -15,7 +15,7 @@ subset_gff = function(input, output){
 	gffsub[which(gffsub$V7 == "-"),"V4"] = gffsub[which(gffsub$V7 == "-"),"V5"]
 
 	#Extract gene names, remove extraneous dictionary keys and values as needed
-	names = str_extract(gffsub$V9, "Name=.*;")
+	names = str_extract(gffsub$V9, "Name=.*")
 	names = gsub("Name=", "", names)
 	names = gsub(";.*$", "", names)
 
